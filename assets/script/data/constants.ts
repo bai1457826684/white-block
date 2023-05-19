@@ -1,5 +1,5 @@
 import { game } from '../game/game';
-import { management } from '../game/management';
+// import { management } from '../game/management';
 
 // 游戏状态
 enum GAME_STATE {
@@ -39,14 +39,14 @@ export class Constants {
   // game class
   static Game: game;
   // managemant class
-  static Management: management;
+  // static Management: management;
 
   // block
   static BLOCK_WIDTH = 187.5; // 方块宽
-  static BLOCK_HEIGHT = 280; // 方块高
+  static BLOCK_HEIGHT = 340; // 方块高
 
   // game
-  static SPEED = 500; // 初始速度
+  static SPEED = 550; // 初始速度
   // static acceleration
   static ACCELERATION = 10; // 加速度
 

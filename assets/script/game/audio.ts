@@ -1,5 +1,6 @@
 import { _decorator, AudioClip, AudioSource, Component, Node } from 'cc';
 import { Constants } from '../data/constants';
+import { AudioData } from '../data/AudioData';
 const { ccclass, property } = _decorator;
 
 @ccclass('audio')
@@ -28,26 +29,27 @@ export class audio extends Component {
 
   // 音频列表
   audioList: Array<AudioSource> = [];
-  audioLength = 0;
+  // audioLength = 0;
   // 当前播放音频索引
   pianoIndex = 0;
 
   start() {
-    // this.audioA
-    // const audio = this.node.getComponent(AudioSource)!;
-    // console.log(audio);
     this.audioList = this.node.getComponents(AudioSource);
-    this.audioLength = this.audioList.length;
+    // this.audioLength = this.audioList.length;
+    
 
     Constants.Game.node.on(Constants.EVENT_CLICK_BLACK, this.playPiano.bind(this), this);
   }
 
   // 播放钢琴音频
   playPiano() {
-    const audio = this.audioList[this.pianoIndex];
+    const index = Number(AudioData.KA_NONG[this.pianoIndex]) - 1;
+    console.log(index);
+    
+    const audio = this.audioList[index];
     audio.play();
     this.pianoIndex++;
-    if (this.pianoIndex >= this.audioLength) {
+    if (this.pianoIndex >= AudioData.KA_NONG.length) {
       this.pianoIndex = 0;
     }
   }

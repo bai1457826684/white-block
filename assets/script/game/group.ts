@@ -66,13 +66,13 @@ export class group extends Component {
       // console.log(y);
 
       // 销毁节点
-      if (y < -200) {
+      if (y < -Constants.BLOCK_HEIGHT * 2 / 3) {
         // console.log(this.blackNum, y, this.node.uuid, '< -200');
         if (this.blackNum > 0) {
           Constants.Game.gameOver();
         }
         // 超出屏幕
-        if (y < -300) {
+        if (y < -Constants.BLOCK_HEIGHT - 50) {
           this.node.destroy();
           Constants.Game.node.emit(Constants.EVENT_GROUP_DESTROY);
           // this.node.getWorldPosition().clone();

@@ -66,7 +66,6 @@ export class game extends Component {
    */
   isTheFrontGroup(uuid: string): boolean {
     const element = this.panel.children.find((ele) => ele.getComponent(group).blackNum > 0);
-    console.log(element?.uuid, uuid);
     return element?.uuid === uuid;
   }
 

@@ -44,10 +44,8 @@ export class block extends Component {
    * @param type 方块类型
    */
   setBlockType(type: BLOCK_TYPE) {
-    this._blockType = type;
-    this.node.children.forEach((item) => {
-      item.active = false;
-    });
+    this.node.getChildByName(this._blockType).active = false;
     this.node.getChildByName(type).active = true;
+    this._blockType = type;
   }
 }
