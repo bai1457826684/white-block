@@ -1,4 +1,4 @@
-import { _decorator, AudioClip, AudioSource, Component, Node } from 'cc';
+import { _decorator, AudioClip, AudioSource, Component, Node, sys } from 'cc';
 import { Constants } from '../data/constants';
 import { AudioData } from '../data/AudioData';
 const { ccclass, property } = _decorator;
@@ -30,7 +30,7 @@ export class audio extends Component {
   // 音频列表
   audioList: Array<AudioSource> = [];
   // 当前播放音频索引
-  pianoIndex = 0;
+  pianoIndex: number = Number(sys.localStorage.getItem('pianoIndex') || 0);
 
   start() {
     this.audioList = this.node.getComponents(AudioSource);
@@ -50,6 +50,7 @@ export class audio extends Component {
     if (this.pianoIndex >= AudioData.allMusic.length) {
       this.pianoIndex = 0;
     }
+    sys.localStorage.setItem('pianoIndex', this.pianoIndex.toString());
   }
 
   onDestroy() {
